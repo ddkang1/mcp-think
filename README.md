@@ -36,16 +36,16 @@ You can run the MCP server directly:
 mcp-think
 ```
 
-By default, it uses stdio transport. To use SSE transport:
+By default, it uses SSE transport. To use stdio transport:
 
 ```bash
-mcp-think --sse
+mcp-think --transport stdio
 ```
 
 You can also specify host and port for SSE transport:
 
 ```bash
-mcp-think --sse --host 127.0.0.1 --port 3001
+mcp-think --host 0.0.0.0 --port 3001
 ```
 
 ## Configuration
@@ -55,8 +55,21 @@ To use this tool with Claude in Windsurf, add the following configuration to you
 ```json
 "think": {
     "command": "/home/xxx/.local/bin/mcp-think",
-    "args": [],
+    "args": ["--transport", "stdio"],
     "type": "stdio",
+    "pollingInterval": 30000,
+    "startupTimeout": 30000,
+    "restartOnFailure": true
+}
+```
+
+For SSE transport (default):
+
+```json
+"think": {
+    "command": "/home/xxx/.local/bin/mcp-think",
+    "args": [],
+    "type": "sse",
     "pollingInterval": 30000,
     "startupTimeout": 30000,
     "restartOnFailure": true
