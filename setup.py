@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="mcp-think",
-    version="0.1.1",
+    version="0.2.1",
     description="An MCP server implementing the think tool for Claude and other LLMs",
     author="Don Kang",
     author_email="donkang34@gmail.com",
