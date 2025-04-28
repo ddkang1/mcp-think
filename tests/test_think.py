@@ -24,12 +24,5 @@ class TestThinkTool(unittest.TestCase):
         # Check the result
         self.assertEqual(result, thought)
         
-        # Check that the thought was logged
-        from mcp_think.server import thoughts_log
-        self.assertEqual(len(thoughts_log), 1)
-        self.assertEqual(thoughts_log[0]["timestamp"], "2025-04-18T22:00:00")
-        self.assertEqual(thoughts_log[0]["thought"], thought)
-
-
 if __name__ == "__main__":
     unittest.main()

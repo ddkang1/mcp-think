@@ -18,10 +18,7 @@ import anyio
 from anyio.streams.memory import MemoryObjectReceiveStream, MemoryObjectSendStream
 
 # Initialize FastMCP server
-mcp = FastMCP("think")
-
-# Store the thoughts for logging purposes
-thoughts_log = []
+mcp = FastMCP("think", log_level="CRITICAL")
 
 @mcp.tool()
 async def think(thought: str) -> str:
@@ -30,13 +27,7 @@ async def think(thought: str) -> str:
     Args:
         thought: Your thoughts.
     """
-    # Log the thought with a timestamp
-    timestamp = datetime.datetime.now().isoformat()
-    thoughts_log.append({
-        "timestamp": timestamp,
-        "thought": thought
-    })
-    
+
     # Return a confirmation
     return thought
 
